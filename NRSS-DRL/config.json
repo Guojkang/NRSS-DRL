@@ -1,0 +1,55 @@
+{
+  "data": {
+    "data_dir": "data",
+    "well_a": "Well_A.csv",
+    "well_b": "Well_B.csv",
+    "well_c": "Well_C.csv",
+    "feature_cols": ["PE", "DEN", "AC", "GR", "RS", "CNL", "M2R1"],
+    "target_col": "TOC",
+    "depth_col": "Depth",
+    "window_length": 16,
+    "train_val_ratio": 0.8,
+    "sampling_interval": 0.125
+  },
+  "model": {
+    "dx": 7,
+    "dz": 64,
+    "dm": 128,
+    "n_transformer_layers": 2,
+    "n_heads": 4,
+    "ffn_dim": 256,
+    "dropout": 0.1,
+    "actor_hidden": [256, 128],
+    "critic_hidden": [256, 128]
+  },
+  "train": {
+    "episodes": 300,
+    "batch_size": 64,
+    "gamma": 0.95,
+    "tau": 0.005,
+    "lr_actor": 1e-4,
+    "lr_critic": 1e-3,
+    "exploration_sigma": 0.1,
+    "input_noise_sigma": 0.05,
+    "beta_rec": 0.1,
+    "weight_decay": 1e-4,
+    "lambda_g": 0.5,
+    "delta_p": 0.5,
+    "delta_g": 0.1,
+    "grad_clip": 5.0,
+    "replay_capacity": 100000,
+    "early_stop_patience": 0,
+    "seed": 42,
+    "device": "cuda",
+    "checkpoint_dir": "checkpoints",
+    "log_every": 1
+  },
+  "calibration": {
+    "ratios": [0.05, 0.1, 0.2],
+    "epochs": 50,
+    "lr": 1e-4,
+    "delta_c": 1.0,
+    "lambda_a": 1e-3,
+    "seed": 42
+  }
+}
